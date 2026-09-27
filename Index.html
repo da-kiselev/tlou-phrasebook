@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Endure &amp; Survive Phrasebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#E9ECE3; --paper:#F5F6F0; --ink:#1D2520; --muted:#5C6A5F; --line:#C9D0C1;
+  --accent:#46613A; --accent-ink:#F5F6F0;
+  --neutral:#2F6B4F; --informal:#2D5E8A; --southern:#8A6420; --rude:#A2392E;
+  --neutral-bg:#DDEBE2; --informal-bg:#DCE6F0; --southern-bg:#F1E6CF; --rude-bg:#F3DCD8;
+  --shadow:0 1px 0 rgba(29,37,32,.06),0 6px 20px -12px rgba(29,37,32,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#131815; --paper:#1B221D; --ink:#DDE4D8; --muted:#94A294; --line:#2E3830;
+    --accent:#9CBC80; --accent-ink:#131815;
+    --neutral:#7FC7A2; --informal:#8DB6E0; --southern:#DDB36A; --rude:#E88B7F;
+    --neutral-bg:#1E3027; --informal-bg:#1D2A38; --southern-bg:#33291A; --rude-bg:#3A221F;
+    --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 24px -14px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#131815; --paper:#1B221D; --ink:#DDE4D8; --muted:#94A294; --line:#2E3830;
+  --accent:#9CBC80; --accent-ink:#131815;
+  --neutral:#7FC7A2; --informal:#8DB6E0; --southern:#DDB36A; --rude:#E88B7F;
+  --neutral-bg:#1E3027; --informal-bg:#1D2A38; --southern-bg:#33291A; --rude-bg:#3A221F;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 24px -14px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:760px;margin:0 auto}
+header{padding-block:28px 12px}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:clamp(40px,9vw,64px);line-height:.95;letter-spacing:.01em;text-transform:uppercase;margin:6px 0 10px;text-wrap:balance}
+h1 span{color:var(--accent)}
+.lede{color:var(--muted);max-width:60ch;margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tab{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:18px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);background:transparent;color:var(--ink);padding:6px 14px;border-radius:3px;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button{font:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.chip{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:5px 10px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+input[type=search]{flex:1 1 180px;min-width:0;font:inherit;font-size:15px;padding:7px 10px;border:1px solid var(--line);border-radius:3px;background:var(--paper);color:var(--ink)}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+.list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.entry{padding-block:14px;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.entry-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 10px}
+.phrase{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:24px;font-weight:700;line-height:1.1}
+.ru{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+.reg{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+.reg-neutral{color:var(--neutral);background:var(--neutral-bg)}
+.reg-informal{color:var(--informal);background:var(--informal-bg)}
+.reg-southern{color:var(--southern);background:var(--southern-bg)}
+.reg-rude{color:var(--rude);background:var(--rude-bg)}
+.def{margin:0}
+.game{margin:0;font-style:italic;color:var(--muted)}
+.game b{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-right:6px}
+.ex{margin:0;font-size:15px}
+.ex::before{content:"e.g. ";font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent)}
+.note{margin:0;font-size:13.5px;color:var(--southern)}
+.section-note{font-size:14px;color:var(--muted);margin:0 0 12px;max-width:62ch}
+.known-mark{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--neutral)}
+
+/* trainer */
+.stage{display:grid;gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);padding:28px 22px;min-height:260px;display:flex;flex-direction:column;justify-content:center;gap:12px;cursor:pointer;text-align:left}
+.card .big{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:700;font-size:clamp(30px,7vw,44px);line-height:1.05;text-wrap:balance}
+.card .big.ru-big{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:clamp(24px,5.5vw,32px)}
+.card .hint{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card .back{display:grid;gap:8px;border-top:1px dashed var(--line);padding-top:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.btn{flex:1 1 140px;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:19px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:10px 14px;border-radius:3px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.again{border-color:var(--rude);color:var(--rude)}
+.btn[disabled]{opacity:.45;cursor:default}
+.meter{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.stats{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink);cursor:pointer;font-size:15px}
+.opt.right{border-color:var(--neutral);background:var(--neutral-bg);color:var(--neutral)}
+.opt.wrong{border-color:var(--rude);background:var(--rude-bg);color:var(--rude)}
+.feedback{font-size:15px;margin:0}
+.linkbtn{background:none;border:none;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:12px;text-decoration:underline;cursor:pointer;padding:0}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">The Last of Us · script vocabulary</div>
+  <h1>Endure <span>&amp;</span> Survive Phrasebook</h1>
+  <p class="lede">Phrases from Joel, Ellie, Tess, Bill and the rest, sorted into what to use, what to recognise, and Ellie's pun book. Game lines are quoted from the script; the “e.g.” sentences are new everyday examples.</p>
+</header>
+
+<nav>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="book" aria-selected="true">Phrasebook</button>
+    <button class="tab" role="tab" data-tab="cards" aria-selected="false">Cards</button>
+    <button class="tab" role="tab" data-tab="quiz" aria-selected="false">Say it or not?</button>
+    <button class="tab" role="tab" data-tab="puns" aria-selected="false">Pun book</button>
+  </div>
+</nav>
+
+<main>
+<section id="tab-book">
+  <div class="controls">
+    <button class="chip" data-f="core" aria-pressed="true">Use · core</button>
+    <button class="chip" data-f="extra" aria-pressed="false">Use · extra</button>
+    <button class="chip" data-f="know" aria-pressed="false">Recognise</button>
+    <button class="chip" data-f="rude" aria-pressed="false">Rude</button>
+    <input type="search" id="q" placeholder="Search phrase or meaning">
+  </div>
+  <p class="section-note" id="book-note"></p>
+  <div class="count" id="book-count"></div>
+  <div class="list" id="book-list"></div>
+</section>
+
+<section id="tab-cards" hidden>
+  <div class="controls">
+    <button class="chip" data-dir="en" aria-pressed="true">EN → RU</button>
+    <button class="chip" data-dir="ru" aria-pressed="false">RU → EN</button>
+    <span style="width:8px"></span>
+    <button class="chip" data-pool="core" aria-pressed="true">Core</button>
+    <button class="chip" data-pool="all" aria-pressed="false">Core + extra</button>
+  </div>
+  <div class="stage">
+    <div class="stats"><span id="card-stats"></span><button class="linkbtn" id="reset-cards">Reset progress</button></div>
+    <div class="meter"><i id="card-meter"></i></div>
+    <div class="card" id="card" role="button" tabindex="0" aria-live="polite"></div>
+    <div class="row">
+      <button class="btn again" id="card-again">Again</button>
+      <button class="btn primary" id="card-good">Got it</button>
+    </div>
+  </div>
+</section>
+
+<section id="tab-quiz" hidden>
+  <p class="section-note">Where would a native speaker say this? Rude phrases are left out of the quiz.</p>
+  <div class="stage">
+    <div class="stats"><span id="quiz-stats"></span></div>
+    <div class="card" id="quiz-card" style="cursor:default"></div>
+    <div class="opts" id="quiz-opts"></div>
+    <p class="feedback" id="quiz-fb"></p>
+    <div class="row"><button class="btn primary" id="quiz-next">Next phrase</button></div>
+  </div>
+</section>
+
+<section id="tab-puns" hidden>
+  <p class="section-note">Read the joke, work out the double meaning, then tap to check.</p>
+  <div class="stage">
+    <div class="stats"><span id="pun-stats"></span></div>
+    <div class="card" id="pun-card" role="button" tabindex="0"></div>
+    <div class="row">
+      <button class="btn" id="pun-prev">Previous</button>
+      <button class="btn primary" id="pun-next">Next joke</button>
+    </div>
+  </div>
+</section>
+</main>
+</div>
+
+<script>
+// tier: core | extra | know | rude ; reg: neutral | informal | southern | rude
+const P = [
+// ---- core
+["hang back","держаться позади, не лезть","core","informal","to stay behind or at a distance instead of getting involved","Joel","Why didn't you just hang back like I told you to?","I'll hang back and let you do the talking."],
+["lead the way","веди, показывай дорогу","core","neutral","to go first and show others where to go","Ellie","Lead the way.","You know this part of town better, so lead the way."],
+["give me a hand (with this)","помоги (с этим)","core","neutral","help me, usually with something physical","Joel","Henry, give me a hand with this.","Could you give me a hand with these boxes?"],
+["I got this","я справлюсь","core","informal","I can handle it, don't worry (standard form: I've got this)","Ellie","I got this.","Relax, I've got this. I've given this talk before."],
+["I've got your back","я прикрою / я на твоей стороне","core","informal","I will protect or support you","Tommy","I got your back.","If the boss asks, I've got your back."],
+["Something on your mind?","тебя что-то беспокоит?","core","neutral","is something bothering you? You seem to be thinking about something","Joel","Something on your mind, Ellie?","You've been quiet all evening. Something on your mind?"],
+["best not to dwell on it","лучше не зацикливаться","core","neutral","dwell on = keep thinking about something unpleasant","Joel","Best not to dwell on it.","The exam went badly, but there's no point dwelling on it."],
+["safety in numbers","вместе безопаснее","core","neutral","a group is safer than one person alone","Ellie","Safety in numbers and all that.","Let's walk back together. Safety in numbers."],
+["see how it pans out","посмотрим, как сложится","core","neutral","pan out = develop or turn out in a particular way","Joel","We're just gonna have to see how everything pans out.","I've applied to three programmes. Let's see how it pans out."],
+["Here goes nothing","ну, была не была","core","informal","said just before trying something that may well fail","Ellie","Here goes nothin'.","First time making pelmeni from scratch. Here goes nothing."],
+["don't jinx it","не сглазь","core","informal","jinx = bring bad luck by talking about success too early","Henry","Yeah, don't jinx us.","It's been quiet all week. Don't jinx it."],
+["That makes two of us","я тоже / нас таких двое","core","neutral","a reply meaning “the same is true for me”","Ellie","That makes two of us.","“I have no idea what he meant.” “That makes two of us.”"],
+["still in one piece","цел и невредим","core","informal","not hurt or damaged","Joel","Still in one piece.","The laptop fell off the table but it's still in one piece."],
+["keep an eye out (for)","смотри в оба, высматривай","core","neutral","watch for something or someone to appear","Joel","I'll go have a look. You keep an eye out.","Keep an eye out for cheap flights in March."],
+["keep your eyes peeled","гляди в оба","core","informal","watch very carefully","Henry","Keep your eyes peeled!","Keep your eyes peeled for a parking space."],
+["way ahead of you","я уже (тебя опередил)","core","informal","I've already thought of or done that","Joel","Way ahead of you, kid.","“We should book the tickets.” “Way ahead of you, done yesterday.”"],
+["How are you holding up?","как ты держишься?","core","neutral","how are you coping in a difficult situation?","Joel","What about you, how you holdin' up?","I heard about your dad. How are you holding up?"],
+["no sweat","без проблем","core","informal","no problem, it's easy","Tommy","No sweat.","“Thanks for the lift.” “No sweat.”"],
+["tough it out","перетерпеть, выдержать","core","informal","to continue through something unpleasant without giving up","Earl","It's just a couple more hours. I'll tough it out.","The first month in a new city is hard, but I'll tough it out."],
+["(no) walk in the park","(не) лёгкая прогулка","core","neutral","walk in the park = something easy","Tommy","You ain't talking about some walk in the park here.","Learning German from scratch is no walk in the park."],
+["a close call","едва пронесло","core","neutral","a situation where something bad very nearly happened","Joel","How many close calls have we had?","I nearly missed the train. That was a close call."],
+["on thin ice","на тонком льду","core","neutral","in a risky position; close to making someone angry","Joel","You are treading on some mighty thin ice here.","You're on thin ice after missing two deadlines."],
+["go (our) separate ways","разойтись, каждый своей дорогой","core","neutral","to end a partnership or stop travelling together","Joel","And we are going our separate ways.","After university we all went our separate ways."],
+["my mind's made up","я уже решил","core","neutral","my decision is final","Joel","My mind's all made up.","Don't try to talk me out of it. My mind's made up."],
+["won't budge","не поддаётся, не сдвинется","core","neutral","won't move at all; also: won't change position in a negotiation","Ellie","This won't budge.","The landlord won't budge on the rent."],
+["running on fumes","на последнем издыхании","core","informal","almost out of energy (like a car with an empty tank)","Marlene","I'm running on fumes, but I'll make it.","Three lessons and two seminars today. I'm running on fumes."],
+["beggars can't be choosers","выбирать не приходится","core","neutral","when you need help, you can't be picky about it","Tess","Beggars can't be choosers.","It's a tiny room, but beggars can't be choosers."],
+["the coast is clear","путь свободен","core","neutral","no one is watching; it's safe to go","Tess","Looks like the coast is clear.","Text me when the coast is clear."],
+["go off without a hitch","пройти без сучка и задоринки","core","neutral","happen exactly as planned, with no problems","Tess","Deal went off without a hitch.","The conference went off without a hitch."],
+["go south","пойти наперекосяк","core","informal","start going wrong","Joel","The whole deal went south.","Things went south when the client changed the brief."],
+["no hard feelings","без обид","core","neutral","I'm not angry with you (or: please don't be angry with me)","Robert","Tess. Joel. No hard feelings, right?","I voted for the other plan, but no hard feelings."],
+["hold your horses","придержи коней","core","informal","wait, don't rush","Ellie","Hold your horses.","Hold your horses, we haven't agreed on a price yet."],
+["the jury's still out","пока неясно, вопрос открыт","core","neutral","people haven't reached a decision yet","Ellie","Jury's still out.","The jury's still out on whether the new method works."],
+["catch your breath","отдышаться","core","neutral","rest until you breathe normally; also: take a short break","Joel","Catch your breath. We're leaving.","Let me catch my breath before the next class."],
+["I'll believe it when I see it","поверю, когда увижу","core","neutral","I doubt this will really happen","Joel","I'll believe it when I see it.","He says he'll pay me back on Friday. I'll believe it when I see it."],
+["cut to the chase","ближе к делу","core","neutral","skip the introduction and say the important part","Joel","I'll cut to the chase. I need a car.","Let me cut to the chase: we need more time."],
+["blow up in your face","выйти боком","core","informal","a plan goes badly wrong and hurts you","Bill","You keep babysitting long enough and eventually it's gonna blow up in your face.","If you lie on your CV, it could blow up in your face."],
+["hold your own","не уступать, держаться достойно","core","neutral","perform well against strong competition or in a hard situation","Joel","You gotta admit, she did hold her own back there.","She held her own in the debate against the professors."],
+["take someone up on (an offer)","принять предложение, поймать на слове","core","neutral","accept an offer that someone made","Hunter","I'll take you up on that.","You offered to show me around Tomsk. I'll take you up on that."],
+["speaking of which","кстати об этом","core","neutral","used to move to a related topic","Tess","Speaking of which, where are they?","We need a new plan. Speaking of which, has anyone seen Anna?"],
+// ---- extra
+["business as usual","всё как обычно","extra","neutral","normal situation, nothing special","Ellie","Business as usual, right?","The power went out for an hour, then it was business as usual."],
+["word travels fast","слухи быстро расходятся","extra","neutral","news spreads quickly","Woman in Jackson","Word travels quickly around these parts.","I only told Masha, and now everyone knows. Word travels fast."],
+["you can't miss it","не пропустишь","extra","neutral","it is very easy to find","Tommy","It's in the science building, looks like a giant mirror, you can't miss it.","The café is next to the big red church. You can't miss it."],
+["keep a low profile","не привлекать внимания","extra","neutral","avoid attention","Joel","Maybe these guys like to keep a low profile.","After the argument he kept a low profile for a week."],
+["lay low","залечь на дно","extra","informal","stay hidden or inactive for a while","Tess","You're the one who's always going on about layin' low.","I'm going to lay low this weekend and just rest."],
+["play it cool","держаться спокойно","extra","informal","act calm and relaxed, don't show nervousness","Tess","Just play it cool.","At the border just play it cool and answer the questions."],
+["bet on the wrong horse","поставить не на ту лошадь","extra","neutral","support someone or something that fails","Tess","I say you bet on the wrong horse.","We bet on the wrong horse with that supplier."],
+["home stretch","финишная прямая","extra","neutral","the last part of a journey or task","Joel","Home stretch, Tess.","Two chapters left. We're in the home stretch."],
+["trouble in paradise","разлад (в отношениях)","extra","informal","ironic: problems in a relationship that looked perfect","Bill","Sounds to me like might be trouble in paradise.","They didn't sit together at dinner. Trouble in paradise?"],
+["one of a kind","единственный в своём роде","extra","neutral","unique, unlike anyone else","Joel","Yeah, he's one of a kind.","My grandmother was one of a kind."],
+["sitting ducks","лёгкая мишень","extra","informal","people who are easy to attack","Bill","We're sittin' ducks here.","Without a backup, our files are sitting ducks."],
+["you know the drill","ты знаешь порядок","extra","informal","you already know what to do; the usual routine","Joel","You know the drill. Look around, see if there is anything we can use.","New students, you know the drill: name, level, one fun fact."],
+["too rich for my blood","мне не по карману","extra","informal","too expensive or luxurious for me","Joel","No, this is too rich for my blood.","That restaurant is too rich for my blood."],
+["give someone a holler","крикнуть, дать знать","extra","informal","call or contact someone (American, folksy)","Joel","I'll give you a holler.","Give me a holler when you're free."],
+["get a move on","поторапливаться","extra","informal","hurry up","Joel","Get a move on.","Get a move on, the bus leaves in five minutes."],
+["knock it off","прекрати","extra","informal","stop doing that (a bit sharp)","Joel","Knock it off.","Knock it off, you two, I'm trying to work."],
+["it's up there","одно из первых мест","extra","informal","it ranks near the top (of worst, best, etc.)","Joel","It's up there. (reply to: the worst job you've ever taken)","“Worst flight ever?” “It's up there.”"],
+["you'd be amazed","ты не поверишь","extra","neutral","it's more than you would expect","Bill","You'd be amazed at how many cars still got gas in 'em.","You'd be amazed how much you can learn in ten minutes a day."],
+["earn your keep","отрабатывать своё","extra","neutral","do enough work to justify being fed, paid or kept","Hunter","Sometimes you gotta earn your keep.","The new intern is earning his keep."],
+["I'll bite","ладно, клюну — рассказывай","extra","informal","OK, I'll ask / I'm curious (reacting to a teaser)","Tommy","Alright. I'll bite. Why bring her here?","“Guess what happened today.” “OK, I'll bite.”"],
+["lighten the mood","разрядить обстановку","extra","neutral","make a serious situation feel less tense","Ellie","Okay, we need to lighten the mood.","He told a joke to lighten the mood."],
+["keep your expectations in check","не жди слишком многого","extra","neutral","don't expect too much","Hunter","Keep your expectations in check, youngun.","It's a first date. Keep your expectations in check."],
+["takes me back","навевает воспоминания","extra","neutral","reminds me of the past","Joel","Well, this place takes me back.","This song really takes me back to school."],
+["cross the line","перейти черту","extra","neutral","do something unacceptable","Hunter","He's crossed the line this time.","Criticism is fine, but insults cross the line."],
+["in a jam","в передряге","extra","informal","in a difficult situation","Marlene","Said if I was ever in a jam I could rely on him.","Call me if you're ever in a jam."],
+["give it a shot","попробуй","extra","informal","try it","Joel","Henry, give it a shot!","I've never tried ice skating, but I'll give it a shot."],
+["give it a whirl","опробовать","extra","informal","try something for the first time","Joel","Let's give this baby a whirl.","New app for flashcards? I'll give it a whirl."],
+["dead serious","абсолютно серьёзно","extra","informal","completely serious, not joking","Joel","Dead serious.","I'm dead serious, I'm moving abroad."],
+["scrounge up","раздобыть","extra","informal","find or collect something with difficulty","Joel","Then we can scrounge up some food.","Let's see if we can scrounge up some chairs for the guests."],
+["by the looks of it","судя по всему","extra","neutral","judging from what can be seen","Joel","Yeah, by the looks of it.","By the looks of it, it's going to rain."],
+// ---- recognise
+["get wrangled up","«всех рано или поздно заарканят»","know","southern","Tommy's joke about getting married. To wrangle = to round up cattle (cowboy word), so: everyone gets caught and settled down eventually.","Tommy","We all gotta get wrangled up at some point.",""],
+["ain't","am not / isn't / aren't / haven't","know","southern","non-standard negative, very common in Southern and working-class speech; sounds like a stylisation if a learner uses it","Joel","It ain't that much different from what the military does.",""],
+["it don't matter","it doesn't matter","know","southern","non-standard grammar: don't with he/she/it; part of Joel's Texan voice","Joel","It don't matter what you thought.",""],
+["reckon","думаю, полагаю","know","southern","think / suppose. Rural or Southern in the US; everyday informal in the UK and Australia","Joel","You reckon you can handle that?",""],
+["y'all","вы все","know","southern","you (plural). Standard in the US South, marked elsewhere","Henry","Alright, y'all ready?",""],
+["fella","парень, мужик","know","southern","fellow, guy; folksy and a little old-fashioned","Joel","There's a fella there that owes me some favors.",""],
+["That a fact?","да ну? правда?","know","southern","“Is that a fact?”: mild surprise, a little old-fashioned","Joel","That a fact?",""],
+["What in the Sam Hill?","какого чёрта?","know","southern","old American euphemism for “what the hell”","Joel","What in the Sam Hill?",""],
+["Whoa, Nelly","ого! тпру!","know","southern","old-fashioned exclamation of surprise (originally said to a horse)","Ellie","Whoa, Nelly. What the hell was that?",""],
+["jerry-rigged","собранный на коленке","know","informal","improvised, fixed in a temporary way (a mix of jury-rigged and jerry-built)","Joel","Looks like someone jerry-rigged this thing.",""],
+["mumbo-jumbo","непонятная тарабарщина","know","informal","words or procedures you think are meaningless or too complicated","Joel","Ain't nothin' here but a bunch of medical mumbo-jumbo.",""],
+["booby-trapped","заминированный, с ловушками","know","informal","set with hidden traps","Bill","Whole goddamn town's booby-trapped.",""],
+["head honcho","главный, босс","know","informal","the boss, the person in charge","Hunter","New head honcho... same bullshit talk.",""],
+["youngun","молодой, салага","know","southern","young one, youngster; dialect","Hunter","Keep your expectations in check, youngun.",""],
+["buddy boy","дружок (с издёвкой)","know","informal","condescending way to address a man","Ellie","Ditto for buddy boy over there.",""],
+["floor it / punch it","жми на газ!","know","informal","press the accelerator all the way","Bill","Floor it!",""],
+["write blank checks","раздавать пустые обещания","know","informal","In Tess's line: promise payment he can't really cover. The usual meaning of a blank check is unlimited freedom to act (карт-бланш).","Tess","If Robert's good at one thing, it's writing blank checks.",""],
+["pop a clutch","завести с толкача","know","informal","start a car by rolling it and releasing the clutch in gear","Ellie","I know how to pop a clutch.",""],
+["got some scrap in him","умеет драться","know","informal","has fighting spirit; scrap = a fight","Hunter","This tourist got some scrap in him.",""],
+// ---- rude
+["scare the shit out of someone","напугать до смерти","rude","rude","frighten someone badly. Common among friends, but vulgar","Ellie","You scared the shit outta me!","Neutral: You scared me to death!"],
+["full of shit","врёшь, несёшь чушь","rude","rude","lying or talking nonsense","Ellie","You're so full of shit.","Neutral: That's nonsense."],
+["could(n't) give two shits","плевать","rude","rude","don't care at all. Joel drops the not; both forms mean the same","Joel","I could give two shits about what you're up to.","Neutral: I couldn't care less."],
+["a stick up one's ass","зануда, напыщенный","rude","rude","too formal, uptight, humourless","Ellie","Man, he's got a stick up his ass.","Neutral: He's so uptight."],
+["sack up","соберись, будь мужиком","rude","rude","find your courage (crude)","Bill","Alright... time to sack up.","Neutral: Time to toughen up."],
+["chickenshit","трус","rude","rude","coward (vulgar)","Ellie","Let go of me, you chickenshit!","Neutral: coward"],
+["haul ass","сваливать бегом","rude","rude","move or leave very fast","Joel","Get ready to haul ass.","Neutral: Get ready to run."]
+];
+const PHRASES = P.map((a,i)=>({id:i,p:a[0],ru:a[1],tier:a[2],reg:a[3],def:a[4],who:a[5],line:a[6],ex:a[7]}));
+
+const PUNS = [
+["Ellie","You wanna hear a joke about pizza? Never mind, it was too cheesy.","cheesy = full of cheese, and also “corny, embarrassingly silly”."],
+["Sam","Why can't your nose be twelve inches long? Because then it would be a foot.","Twelve inches = one foot (measure), and a foot is also a body part."],
+["Ellie","Bakers trade bread recipes on a knead-to-know basis.","knead (work dough) sounds like need; “need-to-know basis” = only told what you must know."],
+["Ellie","A moon rock tastes better than an earthly rock because it's meteor.","meteor sounds like meatier (more meaty)."],
+["Ellie","A backwards poet writes inverse.","inverse (reversed) sounds like in verse (in poetry)."],
+["Ellie","I used to be addicted to soap, but I'm clean now.","clean = washed, and also “no longer using drugs”."],
+["Ellie","It doesn't matter how much you push the envelope, it'll still be stationary.","push the envelope = go beyond limits; stationary (not moving) sounds like stationery (paper, envelopes)."],
+["Ellie","What did the Confederate soldiers use to eat off of? Civil ware.","Civil War vs. ware = dishes (tableware)."],
+["Ellie","A book just fell on my head. I only have my shelf to blame.","my shelf sounds like myself; “I only have myself to blame”."],
+["Ellie","What is the leading cause of divorce in long-term marriages? A stalemate.","stalemate = deadlock (chess), read as a stale (old, boring) mate (partner)."],
+["Ellie","3.14% of sailors are pi rates.","pi = 3.14, so pi rates = pirates."],
+["Ellie","I stayed up all night wondering where the sun went. Then it dawned on me.","it dawned on me = I suddenly understood; dawn is also sunrise."],
+["Ellie","What did the mermaid wear to her math class? An algae bra.","algae (seaweed) + bra sounds like algebra."],
+["Ellie","Why did the scarecrow get a promotion? Because he was outstanding in his field.","outstanding in his field = excellent at his job; literally, standing out in a field."],
+["Ellie","I tried to catch some fog earlier. I mist.","mist (light fog) sounds like missed."],
+["Ellie","Do you know what's not right? Left.","not right = wrong, and also the opposite direction, left."],
+["Ellie","People are making up apocalypse jokes like there's no tomorrow.","like there's no tomorrow = without restraint; in an apocalypse there literally is no tomorrow. Ellie: “Too soon.”"]
+];
+
+const REG_LABEL={neutral:"neutral",informal:"informal",southern:"southern / dated",rude:"rude"};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// storage
+let store={known:{}};
+try{const s=localStorage.getItem("eas-progress");if(s)store=Object.assign(store,JSON.parse(s));}catch(e){}
+function save(){try{localStorage.setItem("eas-progress",JSON.stringify(store));}catch(e){}}
+
+// tabs
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===t));
+  ["book","cards","quiz","puns"].forEach(n=>document.getElementById("tab-"+n).hidden=(n!==t.dataset.tab));
+  if(t.dataset.tab==="book")renderBook();
+}));
+
+// phrasebook
+let filter="core";
+const NOTES={core:"The phrases most worth using. Everyday, and fine for most situations.",extra:"Also useful, a bit more situational or casual.",know:"Understand these when you hear them, but they are regional, dated or niche. “Common” shows the standard form.",rude:"Vulgar. Good to recognise in films and games; each has a neutral alternative. Not included in the trainers."};
+document.querySelectorAll("[data-f]").forEach(c=>c.addEventListener("click",()=>{
+  filter=c.dataset.f;document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",x===c));renderBook();
+}));
+document.getElementById("q").addEventListener("input",renderBook);
+function renderBook(){
+  const q=document.getElementById("q").value.trim().toLowerCase();
+  const items=PHRASES.filter(x=>q?(x.p+" "+x.def+" "+x.ru+" "+x.line).toLowerCase().includes(q):x.tier===filter);
+  document.getElementById("book-note").textContent=q?"Searching all sections.":NOTES[filter];
+  document.getElementById("book-count").textContent=items.length+" phrases";
+  document.getElementById("book-list").innerHTML=items.map(x=>`
+   <article class="entry">
+    <div class="entry-head"><span class="phrase">${esc(x.p)}</span><span class="reg reg-${x.reg}">${REG_LABEL[x.reg]}</span>${store.known[x.id]?'<span class="known-mark">✓ learned</span>':''}</div>
+    <p class="def">${esc(x.def)}</p>
+    <p class="game"><b>${esc(x.who)}</b>“${esc(x.line)}”</p>
+    ${x.ex?(x.tier==="rude"?`<p class="note">${esc(x.ex)}</p>`:`<p class="ex">${esc(x.ex)}</p>`):""}
+    <div class="ru">${/[а-яё]/i.test(x.ru)?"RU":"Common"}: ${esc(x.ru)}</div>
+   </article>`).join("");
+}
+
+// cards
+let dir="en",pool="core",queue=[],cur=null,flipped=false;
+function poolItems(){return PHRASES.filter(x=>pool==="core"?x.tier==="core":(x.tier==="core"||x.tier==="extra"));}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function buildQueue(){const items=poolItems();const unk=items.filter(x=>!store.known[x.id]);queue=shuffle(unk.length?unk:items.slice());}
+function nextCard(){if(!queue.length)buildQueue();cur=queue.shift();flipped=false;drawCard();}
+function drawCard(){
+  const items=poolItems(),k=items.filter(x=>store.known[x.id]).length;
+  document.getElementById("card-stats").textContent=`${k} / ${items.length} learned`;
+  document.getElementById("card-meter").style.width=(100*k/items.length)+"%";
+  const front=dir==="en"?`<div class="big">${esc(cur.p)}</div>`:`<div class="big ru-big">${esc(cur.ru)}</div>`;
+  const back=flipped?`<div class="back">
+      ${dir==="ru"?`<div class="big" style="font-size:30px">${esc(cur.p)}</div>`:`<div class="ru" style="font-size:15px">${esc(cur.ru)}</div>`}
+      <p class="def">${esc(cur.def)}</p>
+      <p class="game"><b>${esc(cur.who)}</b>“${esc(cur.line)}”</p>
+      <p class="ex">${esc(cur.ex)}</p></div>`:`<div class="hint">Tap to reveal</div>`;
+  document.getElementById("card").innerHTML=`<span class="reg reg-${cur.reg}" style="align-self:flex-start">${REG_LABEL[cur.reg]}</span>`+front+back;
+}
+const cardEl=document.getElementById("card");
+cardEl.addEventListener("click",()=>{flipped=!flipped;drawCard();});
+cardEl.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();flipped=!flipped;drawCard();}});
+document.getElementById("card-good").addEventListener("click",()=>{store.known[cur.id]=true;save();nextCard();});
+document.getElementById("card-again").addEventListener("click",()=>{delete store.known[cur.id];save();queue.splice(Math.min(3,queue.length),0,cur);nextCard();});
+document.getElementById("reset-cards").addEventListener("click",function(){
+  if(this.dataset.confirm){store.known={};save();this.textContent="Reset progress";delete this.dataset.confirm;buildQueue();nextCard();}
+  else{this.dataset.confirm=1;this.textContent="Tap again to reset";setTimeout(()=>{delete this.dataset.confirm;this.textContent="Reset progress";},3000);}
+});
+document.querySelectorAll("[data-dir]").forEach(c=>c.addEventListener("click",()=>{dir=c.dataset.dir;document.querySelectorAll("[data-dir]").forEach(x=>x.setAttribute("aria-pressed",x===c));flipped=false;drawCard();}));
+document.querySelectorAll("[data-pool]").forEach(c=>c.addEventListener("click",()=>{pool=c.dataset.pool;document.querySelectorAll("[data-pool]").forEach(x=>x.setAttribute("aria-pressed",x===c));buildQueue();nextCard();}));
+
+// quiz
+const QOPTS=[["neutral","Anywhere, even at work or with a client"],["informal","With friends, in casual chat"],["southern","Understand it, but don't copy it"]];
+const QEXPL={neutral:"Neutral. Safe in conversation, emails and at work.",informal:"Informal. Natural with friends; sounds too casual in formal settings.",southern:"Regional or dated. Part of a character's voice; from a learner it sounds like imitation."};
+let qPool=[],qItem=null,qScore=0,qTotal=0,qDone=false;
+function nextQuiz(){
+  if(!qPool.length)qPool=shuffle(PHRASES.filter(x=>x.tier!=="rude"));
+  qItem=qPool.shift();qDone=false;
+  const ansReg=qItem.reg;
+  document.getElementById("quiz-card").innerHTML=`<div class="hint">Where would you say it?</div><div class="big">${esc(qItem.p)}</div><p class="def">${esc(qItem.def)}</p>`;
+  document.getElementById("quiz-opts").innerHTML=QOPTS.map(o=>`<button class="opt" data-r="${o[0]}">${o[1]}</button>`).join("");
+  document.getElementById("quiz-fb").textContent="";
+  document.getElementById("quiz-stats").textContent=qTotal?`Score ${qScore} / ${qTotal}`:"Score 0 / 0";
+  document.querySelectorAll("#quiz-opts .opt").forEach(b=>b.addEventListener("click",()=>{
+    if(qDone)return;qDone=true;qTotal++;
+    const ok=b.dataset.r===ansReg;if(ok)qScore++;
+    b.classList.add(ok?"right":"wrong");
+    if(!ok)document.querySelector(`#quiz-opts .opt[data-r="${ansReg}"]`).classList.add("right");
+    document.getElementById("quiz-fb").innerHTML=`${ok?"Right.":"Not quite."} ${esc(QEXPL[ansReg])} <span class="game">(${esc(qItem.who)}: “${esc(qItem.line)}”)</span>`;
+    document.getElementById("quiz-stats").textContent=`Score ${qScore} / ${qTotal}`;
+  }));
+}
+document.getElementById("quiz-next").addEventListener("click",nextQuiz);
+
+// puns
+let pi=0,pShow=false;
+function drawPun(){
+  const [who,joke,expl]=PUNS[pi];
+  document.getElementById("pun-stats").textContent=`Joke ${pi+1} of ${PUNS.length}`;
+  document.getElementById("pun-card").innerHTML=`<div class="hint">${esc(who)} reads</div><div class="big ru-big">“${esc(joke)}”</div>`+(pShow?`<div class="back"><p class="def">${esc(expl)}</p></div>`:`<div class="hint">Tap to see the wordplay</div>`);
+}
+const punEl=document.getElementById("pun-card");
+punEl.addEventListener("click",()=>{pShow=!pShow;drawPun();});
+punEl.addEventListener("keydown",e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();pShow=!pShow;drawPun();}});
+document.getElementById("pun-next").addEventListener("click",()=>{pi=(pi+1)%PUNS.length;pShow=false;drawPun();});
+document.getElementById("pun-prev").addEventListener("click",()=>{pi=(pi-1+PUNS.length)%PUNS.length;pShow=false;drawPun();});
+
+renderBook();buildQueue();nextCard();nextQuiz();drawPun();
+</script>
+
+</body>
+</html>
